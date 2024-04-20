@@ -7,7 +7,7 @@ namespace EDLauncher.Core
     {
         public const string ApplicationName = "ElDewrito";
         public const string PackageName = "eldewrito";
-        public const string PublicKey = "23ED26B21DEA71D94DCA0DA3140C5C00476F1465A5E72A8732F64737EAB65BC0";
+        public const string PublicKey = "";
         public const string DiscordUrl = "https://discord.gg/0TKY0SDEUHAWL4sG";
         public const string RedditUrl = "https://www.reddit.com/r/HaloOnline";
 
