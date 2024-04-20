@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+    <Platforms>AnyCPU;x64</Platforms>
+	<IsWindows Condition="'$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::Windows)))' == 'true'">true</IsWindows>
+  </PropertyGroup>
+
+  <ItemGroup Condition="'$(IsWindows)'=='true'">
+    <ProjectReference Include="..\TorrentLib.Native\TorrentLib.Native.vcxproj" />
+  </ItemGroup>
+
+</Project>

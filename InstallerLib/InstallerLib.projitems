@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects Condition="'$(MSBuildVersion)' == '' Or '$(MSBuildVersion)' &lt; '16.0'">$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>92ddd784-f9c2-460a-af73-0db07f8c845e</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>InstallerLib</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Install\InstallOperation.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utility\DerivedTypeJsonConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Install\Events\InstallerEvents.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utility\FileUtility.cs" />
+    <Compile Include="..\InstallerLib\Utility\FirewallHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Install\IInstallerEngine.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Install\Events\IInstallerEvent.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Install\IInstallStep.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Install\JsonConverters.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Install\InstallerEngine.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Install\InstallerBuilder.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Install\InstallerState.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Packages\IPackage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Packages\IPackageCache.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Packages\IPackageDownloader.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utility\JsonFileUtility.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Packages\Manifest.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Packages\PackageDownloadSizeCalculcator.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utility\ShortcutCreator.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Install\Steps\AddFirewallRuleStep.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Install\Steps\CreateDesktopShortcutStep.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Install\Steps\DeleteOldFilesStep.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Install\Steps\DownloadPackageStep.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Install\Steps\ExecuteStep.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Install\Steps\MoveFileStep.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Install\Steps\RelaunchStep.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Install\Steps\ReportStep.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utility\SystemUtility.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utility\TempDirectory.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="$(MSBuildThisFileDirectory)Utility\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Packages\" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,111 @@
+﻿<UserControl x:Class="EDLauncher.Launcher.Settings.Pages.UpdatesPage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:app="clr-namespace:EDLauncher"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:launcherModels="clr-namespace:EDLauncher.Launcher.Models"
+             xmlns:local="clr-namespace:EDLauncher.Launcher.Settings.Pages"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:utility="clr-namespace:EDLauncher.Utility"
+             d:DesignHeight="450" d:DesignWidth="800"
+             mc:Ignorable="d"
+             >
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <StackPanel Orientation="Vertical">
+            <!--  Version  -->
+            <TextBlock Style="{StaticResource L_SettingsLabelStyle}" Text="VERSION" />
+            <StackPanel Margin="0,0,0,8" Orientation="Vertical">
+                <TextBlock VerticalAlignment="Center"
+                           d:Text="0.6.1-debug.1706401096" FontSize="16"
+                           Foreground="#a3afcf"
+                           >
+                    <TextBlock Text="ElDewrito:" Width="72" />
+                    <Run x:Name="txtCurrentVersion" />
+                </TextBlock>
+                <TextBlock VerticalAlignment="Center" FontSize="16"
+                        Foreground="#a3afcf" Margin="0,4,0,0">
+                    <TextBlock Text="Launcher:" Width="72" />
+                    <Run x:Name="txtLauncherVersion" Text="0.1.0" />
+                </TextBlock>
+            </StackPanel>
+
+            <Grid>
+                <TextBlock x:Name="txtLastUpdateCheck" Visibility="Collapsed"
+                   d:Text="Last checked: 14/01/2024 16:35" FontSize="14"
+                   Foreground="#a3afcf" Opacity="0.4"/>
+                <TextBlock x:Name="txtUpdateCheckFailed" Visibility="Collapsed"
+                    d:Text="" FontSize="14"
+                    Opacity="1">
+                    <Run Text="Update check failed."  Foreground="#eb3446" />
+                    <Hyperlink x:Name="updateCheckErrorDetailsLink" Foreground="#eb3446" Click="updateCheckErrorDetailsLink_Click">See Details</Hyperlink>
+                </TextBlock>
+            </Grid>
+            
+
+            <!--  Check Update Button  -->
+            <Grid>
+            <Button x:Name="btnCheckUpdate"
+                    Width="130" Height="32"
+                    FontSize="13"
+                    Margin="0,6,0,10" HorizontalAlignment="Left"
+                    Click="btnCheckUpdate_Click" 
+                    >
+                <Button.Style>
+                    <Style BasedOn="{StaticResource L_PrimaryButtonStyle}" TargetType="{x:Type Button}">
+                        <Setter Property="Content" Value="Check for updates" />
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Path=(utility:AttachedProperties.IsBusy), RelativeSource={RelativeSource Self}}" Value="True">
+                                <Setter Property="Content" Value="Checking" />
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
+            </Grid>
+
+            <!--  Release Channel -->
+            <!--<StackPanel Style="{StaticResource L_SettingStyle}">
+                <TextBlock Style="{StaticResource L_SettingsLabelStyle}" Text="RELEASE CHANNEL" />
+                <TextBlock Style="{StaticResource L_SettingsHelpStyle}" Text="The channel to check for updates on" />
+                <ComboBox x:Name="cbReleaseChannel"
+                   Width="250"
+                   Margin="0,10,0,0" HorizontalAlignment="Left"
+                   DisplayMemberPath="Label" 
+                   ItemsSource="{x:Static launcherModels:OptionLists.ReleaseChannels}"
+                   SelectedValue="{Binding Source={x:Static app:App.LauncherSettings}, Path=ReleaseChannel, Mode=TwoWay}"
+                   SelectedValuePath="Value"
+                   Style="{StaticResource L_SettingsComboBoxStyle}"
+                   SelectionChanged="cbReleaseChannel_SelectionChanged"
+                   />
+            </StackPanel>-->
+            
+            <!--  Check Interval  -->
+            <StackPanel Style="{StaticResource L_SettingStyle}">
+                <TextBlock Style="{StaticResource L_SettingsLabelStyle}" Text="CHECK INTERVAL" />
+                <TextBlock Style="{StaticResource L_SettingsHelpStyle}" Text="How often to check for updates" />
+                <ComboBox x:Name="cbUpdateCheckInterval"
+                          Width="250"
+                          Margin="0,10,0,0" HorizontalAlignment="Left"
+                          DisplayMemberPath="Label" 
+                          ItemsSource="{x:Static launcherModels:OptionLists.UpdateCheckIntervals}"
+                          SelectedValue="{Binding Source={x:Static app:App.LauncherSettings}, Path=UpdateCheckInterval, Mode=TwoWay}"
+                          SelectedValuePath="Value"
+                          Style="{StaticResource L_SettingsComboBoxStyle}"
+                          />
+            </StackPanel>
+
+            <!--  Desktop Notifications  -->
+            <StackPanel Style="{StaticResource L_SettingStyle}">
+                <CheckBox Content="DESKTOP NOTIFICATIONS" IsChecked="{Binding Source={x:Static app:App.LauncherSettings}, Path=EnableDesktopNotifcations, Mode=TwoWay}"  Style="{StaticResource L_SettingsCheckBoxStyle}" />
+                <TextBlock Style="{StaticResource L_SettingsHelpStyle}" Text="Get a desktop notification when there is an update" />
+            </StackPanel>
+
+            <!--  Auto Update -->
+            <StackPanel Style="{StaticResource L_SettingStyle}">
+                <CheckBox Content="AUTO UPDATE" IsChecked="{Binding Source={x:Static app:App.LauncherSettings}, Path=EnableAutoUpdate, Mode=TwoWay}"  Style="{StaticResource L_SettingsCheckBoxStyle}" />
+                <TextBlock Style="{StaticResource L_SettingsHelpStyle}" Text="Enable automatic updates when the game is not running" />
+            </StackPanel>
+
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>

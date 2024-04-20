@@ -1,0 +1,23 @@
+﻿<UserControl x:Class="EDLauncher.Installer.Screens.LearnMoreScreen"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:EDLauncher.Installer.Screens" xmlns:markdig="clr-namespace:Markdig.Wpf;assembly=Markdig.Wpf"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.CommandBindings>
+        <CommandBinding Command="{x:Static markdig:Commands.Hyperlink}" Executed="OpenHyperlink" />
+        <CommandBinding Command="{x:Static markdig:Commands.Image}" Executed="ClickOnImage" />
+    </UserControl.CommandBindings>
+    <Grid>
+        <Border Margin="0,1,0,0" Background="#22161c28" BorderBrush="#11c2deff" BorderThickness="1" CornerRadius="2">
+            <Border BorderBrush="#11c2deff" Margin="20,20,20,65" BorderThickness="0,0,0,1">
+                <markdig:MarkdownViewer BorderThickness="4"  Style="{StaticResource I_MarkdownViewerStyle}" FontSize="15" x:Name="md" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+            </Border>
+        </Border>
+        <StackPanel Margin="30,20" HorizontalAlignment="Right" VerticalAlignment="Bottom" Orientation="Horizontal">
+            <Button x:Name="btnBack" Width="85" Height="30" IsDefault="True" Content="Back" Click="btnBack_Click"/>
+        </StackPanel>
+    </Grid>
+</UserControl>

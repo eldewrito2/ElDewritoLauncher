@@ -1,0 +1,138 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<OutputType>WinExe</OutputType>
+		<TargetFramework>net6.0-windows</TargetFramework>
+		<Nullable>enable</Nullable>
+		<IncludeAllContentForSelfExtract>True</IncludeAllContentForSelfExtract>
+		<UseWPF>True</UseWPF>
+		<UseWindowsForms>true</UseWindowsForms>
+		<Configurations>Debug;Release;</Configurations>
+		<BaseIntermediateOutputPath>$(SolutionDir)\artifacts\obj</BaseIntermediateOutputPath>
+		<BaseOutputPath>$(SolutionDir)\artifacts\bin</BaseOutputPath>
+		<StartupObject>EDLauncher.Program</StartupObject>
+	</PropertyGroup>
+
+	<PropertyGroup>
+		<MajorVersion>0</MajorVersion>
+		<MinorVersion>1</MinorVersion>
+		<PatchVersion>0</PatchVersion>
+		<VersionPrefix>$(MajorVersion).$(MinorVersion).$(PatchVersion)</VersionPrefix>
+		<PackageVersion>$(MajorVersion).$(MinorVersion).$(PatchVersion)</PackageVersion>
+		<VersionPrefix>$(MajorVersion).$(MinorVersion).$(PatchVersion)</VersionPrefix>
+		<FileVersion>$(MajorVersion).$(MinorVersion).$(PatchVersion).0</FileVersion>
+		<AssemblyVersion>$(MajorVersion).0.0.0</AssemblyVersion>
+		<AssemblyName>launcher</AssemblyName>
+		<ProductName>ElDewrito Launcher</ProductName>
+		<Product>ElDewrito Launcher</Product>
+		<Company>ElDewrito Team</Company>
+		<PackageIcon>eldorado.ico</PackageIcon>
+		<ApplicationIcon>Assets\eldorado.ico</ApplicationIcon>
+		<ApplicationManifest>app.manifest</ApplicationManifest>
+		<RootNamespace>EDLauncher</RootNamespace>
+		<IncludeSourceRevisionInInformationalVersion>false</IncludeSourceRevisionInInformationalVersion>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+	  <DebugType>full</DebugType>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+	  <DebugType>full</DebugType>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<Compile Remove="Core\FileUtility.cs" />
+		<Compile Remove="Core\Install\ShortcutCreator.cs" />
+		<Compile Remove="Core\Torrents\FileTruncator.cs" />
+		<Compile Remove="Core\SystemUtility.cs" />
+		<Compile Remove="Installer\Screens\DownloadFinishedScreen.xaml.cs" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Remove="Assets\ed-logo.png" />
+		<None Remove="Assets\EldoritoLogoFinalBlueSmall.png" />
+		<None Remove="Assets\EldoritoLogoFinalSmall.png" />
+		<None Remove="Assets\Fonts\fa-solid-900.ttf" />
+		<None Remove="Assets\Fonts\FontAwesome.otf" />
+		<None Remove="Assets\installer_background.jpg" />
+		<None Remove="Assets\installer_info.md" />
+		<None Remove="Assets\launcher_background.jpg" />
+		<None Remove="Assets\loading_bg.jpg" />
+		<None Remove="Assets\logo.png" />
+		<None Remove="Assets\seed_info.md" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Page Remove="Installer\Screens\DownloadFinishedScreen.xaml" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<COMReference Include="SHDocVw">
+			<WrapperTool>tlbimp</WrapperTool>
+			<VersionMinor>1</VersionMinor>
+			<VersionMajor>1</VersionMajor>
+			<Guid>eab22ac0-30c1-11cf-a7eb-0000c05bae0b</Guid>
+			<Lcid>0</Lcid>
+			<Isolated>false</Isolated>
+			<EmbedInteropTypes>true</EmbedInteropTypes>
+		</COMReference>
+	</ItemGroup>
+
+	<ItemGroup>
+		<Resource Include="Assets\installer_background.jpg" />
+		<Resource Include="Assets\ed-logo.png" />
+		<Resource Include="Assets\Fonts\fa-solid-900.ttf" />
+		<Resource Include="Assets\installer_info.md" />
+		<Resource Include="Assets\seed_info.md" />
+		<Resource Include="Assets\launcher_background.jpg" />
+		<Resource Include="Assets\news.md" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Page Include="App.xaml" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Markdig.Wpf" Version="0.5.0.1" />
+		<PackageReference Include="NuGet.Versioning" Version="6.8.0" />
+		<PackageReference Include="Serilog.Extensions.Logging" Version="7.0.0" />
+		<PackageReference Include="Serilog.Sinks.File" Version="5.0.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\TorrentLib\TorrentLib\TorrentLib.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Compile Update="Properties\Resources.Designer.cs">
+		  <DesignTime>True</DesignTime>
+		  <AutoGen>True</AutoGen>
+		  <DependentUpon>Resources.resx</DependentUpon>
+		</Compile>
+		<Compile Update="Properties\Settings.Designer.cs">
+			<DesignTimeSharedInput>True</DesignTimeSharedInput>
+			<AutoGen>True</AutoGen>
+			<DependentUpon>Settings.settings</DependentUpon>
+		</Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <EmbeddedResource Update="Properties\Resources.resx">
+	    <Generator>ResXFileCodeGenerator</Generator>
+	    <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+	  </EmbeddedResource>
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Update="Properties\Settings.settings">
+			<Generator>SettingsSingleFileGenerator</Generator>
+			<LastGenOutput>Settings.Designer.cs</LastGenOutput>
+		</None>
+	</ItemGroup>
+
+	<Import Project="..\InstallerLib\InstallerLib.projitems" Label="Shared" />
+
+	<Import Project="..\ElDewritoLauncher.Core\ElDewritoLauncher.Core.projitems" Label="Shared" />
+
+</Project>

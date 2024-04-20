@@ -1,0 +1,211 @@
+﻿<UserControl x:Class="EDLauncher.Launcher.SettingsTab"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:local="clr-namespace:EDLauncher"
+             xmlns:controls="clr-namespace:EDLauncher.Controls"
+             d:DesignHeight="1000" d:DesignWidth="800" FontSize="14"
+             Foreground="#d8d8d8"
+             mc:Ignorable="d" 
+             >
+    <UserControl.Resources>
+        <Style x:Key="CategoryListStyle" TargetType="ListBoxItem">
+            <Setter Property="Margin" Value="0,0,0,0" />
+            <Setter Property="Padding" Value="4,8" />
+            <Setter Property="Foreground" Value="#d8d8d8" />
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="Cursor" Value="Hand" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ListBoxItem">
+                        <Border x:Name="Border"
+                                Margin="0,2"
+                                Padding="{TemplateBinding Padding}"
+                                Background="Transparent" CornerRadius="2"
+                                SnapsToDevicePixels="true"
+                                >
+                            <StackPanel VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Orientation="Horizontal">
+                                <controls:FontIcon Width="32"
+                                                   Margin="8,0,4,0" VerticalAlignment="Center"
+                                                   Icon="{TemplateBinding Tag}"
+                                                   />
+                                <ContentPresenter x:Name="content" VerticalAlignment="Center" TextBlock.Foreground="{TemplateBinding Foreground}" />
+                            </StackPanel>
+
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter Property="Opacity" Value="0.5" />
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Foreground" Value="White" />
+                            </Trigger>
+                            <Trigger Property="IsSelected" Value="True">
+                                <Setter TargetName="Border" Property="Background" Value="#007ACC" />
+                                <Setter Property="Foreground" Value="White" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
+
+    <Grid>
+        <Border CornerRadius="10">
+            <Grid>
+                <Grid x:Name="grid1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <Border x:Name="border1"
+                            Grid.Column="0"
+                            Width="160"
+                            Padding="10" VerticalAlignment="Stretch"
+                            Background="#c0060919" BorderBrush="#0e122a"
+                            BorderThickness="0,0,1,0" CornerRadius="8,0,0,8"
+                            >
+                        <Grid x:Name="grid2">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+
+                            <ToggleButton x:Name="btnCompactToggle"
+                                          Width="32" Height="32"
+                                          Margin="4,0,0,4" Padding="0" HorizontalAlignment="Left"
+                                          Background="Transparent" BorderThickness="0"
+                                          Checked="btnCompactToggle_Checked"
+                                          Content="&#xf0c9;"
+                                          FontSize="15"
+                                          FontFamily="{StaticResource FontAwesome}"
+                                          Foreground="#f8f8f8" IsChecked="True"
+                                          Unchecked="btnCompactToggle_Checked"
+                                          >
+                                <ToggleButton.Style>
+                                    <Style TargetType="{x:Type ToggleButton}">
+                                        <Setter Property="Cursor" Value="Hand" />
+                                        <Setter Property="Template">
+                                            <Setter.Value>
+                                                <ControlTemplate TargetType="{x:Type ToggleButton}">
+                                                    <Border x:Name="border"
+                                                            Padding="{TemplateBinding Padding}"
+                                                            Background="#00000000" CornerRadius="2"
+                                                            >
+
+                                                        <Grid>
+
+
+
+                                                            <ContentPresenter x:Name="content"
+                                                                              HorizontalAlignment="Center" VerticalAlignment="Center"
+                                                                              RenderTransformOrigin="0.5, 0.5"
+                                                                              >
+                                                                <ContentPresenter.RenderTransform>
+                                                                    <ScaleTransform CenterX="0.5" CenterY="0.5" ScaleX="-1" />
+                                                                </ContentPresenter.RenderTransform>
+                                                            </ContentPresenter>
+
+
+                                                        </Grid>
+
+                                                    </Border>
+                                                    <ControlTemplate.Triggers>
+                                                        <Trigger Property="IsMouseOver" Value="True">
+                                                            <Trigger.EnterActions>
+                                                                <BeginStoryboard>
+                                                                    <Storyboard>
+                                                                        <ColorAnimation Storyboard.TargetName="border"
+                                                                                        Storyboard.TargetProperty="(Border.Background).Color"
+                                                                                        To="#007ACC" Duration="0:0:0.2"
+                                                                                        />
+                                                                    </Storyboard>
+                                                                </BeginStoryboard>
+                                                            </Trigger.EnterActions>
+                                                            <Trigger.ExitActions>
+                                                                <BeginStoryboard>
+                                                                    <Storyboard>
+                                                                        <ColorAnimation Storyboard.TargetName="border"
+                                                                                        Storyboard.TargetProperty="(Border.Background).Color"
+                                                                                        To="#00000000" Duration="0:0:0.2"
+                                                                                        />
+                                                                    </Storyboard>
+                                                                </BeginStoryboard>
+                                                            </Trigger.ExitActions>
+                                                        </Trigger>
+                                                        <Trigger Property="IsChecked" Value="True">
+                                                            <Trigger.EnterActions>
+                                                                <BeginStoryboard>
+                                                                    <Storyboard>
+                                                                        <DoubleAnimation Storyboard.TargetName="content"
+                                                                                         Storyboard.TargetProperty="(RenderTransform).ScaleX" To="1"
+                                                                                         Duration="0:0:0.2"
+                                                                                         >
+                                                                            <DoubleAnimation.EasingFunction>
+                                                                                <CubicEase />
+                                                                            </DoubleAnimation.EasingFunction>
+                                                                        </DoubleAnimation>
+
+                                                                    </Storyboard>
+                                                                </BeginStoryboard>
+                                                            </Trigger.EnterActions>
+                                                            <Trigger.ExitActions>
+                                                                <BeginStoryboard>
+                                                                    <Storyboard>
+                                                                        <DoubleAnimation Storyboard.TargetName="content"
+                                                                                         Storyboard.TargetProperty="RenderTransform.ScaleX" To="-1"
+                                                                                         Duration="0:0:0.2"
+                                                                                         >
+                                                                            <DoubleAnimation.EasingFunction>
+                                                                                <CubicEase />
+                                                                            </DoubleAnimation.EasingFunction>
+                                                                        </DoubleAnimation>
+
+                                                                    </Storyboard>
+                                                                </BeginStoryboard>
+                                                            </Trigger.ExitActions>
+                                                        </Trigger>
+                                                    </ControlTemplate.Triggers>
+                                                </ControlTemplate>
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Style>
+                                </ToggleButton.Style>
+                            </ToggleButton>
+
+                            <ListBox x:Name="categoryList"
+                                     Grid.Row="1"
+                                     Margin="0,0,0,0"
+                                     FontSize="15"
+                                     Background="Transparent" BorderThickness="0"
+                                     Foreground="#f8f8f8"
+                                     ItemContainerStyle="{StaticResource CategoryListStyle}"
+                                     ScrollViewer.HorizontalScrollBarVisibility="Hidden"
+                                     SelectedIndex="0"
+                                     SelectionChanged="categoryList_SelectionChanged"
+                                     >
+                                <ListBoxItem Tag="&#xf013;">GENERAL</ListBoxItem>
+                                <ListBoxItem Tag="&#xf019;">UPDATES</ListBoxItem>
+                                <ListBoxItem Tag="&#xf1de;">LAUNCH</ListBoxItem>
+                                <ListBoxItem Tag="&#xf6e3;">MODS</ListBoxItem>
+                                <ListBoxItem Tag="&#xe185;">FILES</ListBoxItem>
+                                <ListBoxItem Tag="&#xf093;">SEEDING</ListBoxItem>
+                            </ListBox>
+                        </Grid>
+                    </Border>
+                    <Border Grid.Column="1"
+                            Margin="0" Padding="30,15,30,15"
+                            Background="#f4060919" BorderThickness="0,0,0,0"
+                            CornerRadius="0,8,8,0"
+                            >
+                        <ContentControl x:Name="stage" />
+                    </Border>
+                </Grid>
+            </Grid>
+        </Border>
+    </Grid>
+</UserControl>

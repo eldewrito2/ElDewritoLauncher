@@ -1,0 +1,125 @@
+﻿<UserControl x:Class="EDLauncher.Launcher.Settings.Pages.FilesPage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:EDLauncher.Launcher.Settings.Pages"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sys="clr-namespace:System;assembly=netstandard"
+             d:DesignHeight="450" d:DesignWidth="800"
+             mc:Ignorable="d"
+             >
+    <Grid>
+        <StackPanel Orientation="Vertical">
+            <StackPanel Orientation="Vertical">
+
+                <!-- Location -->
+                <TextBlock Margin="0,8"
+                           FontSize="14"
+                           Style="{StaticResource L_SettingsLabelStyle}"
+                           Text="LOCATION"
+                           />
+                <StackPanel Orientation="Horizontal">
+                    <TextBox x:Name="txtLocation"
+                             Width="400"
+                             FontSize="13"
+                             IsReadOnly="True"
+                             Style="{StaticResource L_SettingsTextBoxStyle}"
+                             />
+                    <Button x:Name="btnOpenFolder"
+                            MinWidth="45" Height="32"
+                            Margin="6,0,0,0" HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            Click="btnOpenFolder_Click" Content="..."
+                            FontSize="13"
+                            Style="{StaticResource L_PrimaryButtonStyle}"
+                            />
+                </StackPanel>
+
+
+                <StackPanel  Margin="0,14,0,0"  Orientation="Horizontal">
+                    
+                
+                <Button x:Name="btnVerifyFiles" MinWidth="100" Height="32"
+                       HorizontalAlignment="Left" Padding="10,0"
+                        Content="Verify Files" FontSize="13" 
+                        Style="{StaticResource L_PrimaryButtonStyle}"
+                        Click="btnVerifyFiles_Click" VerticalAlignment="Center"
+                        />
+                    <TextBlock x:Name="txtVerifyResult" d:Text="Successfully Verified 9001 Files" Visibility="Collapsed" d:Visibility="Visible" Margin="6,0,0,0" Foreground="#2ecc71" VerticalAlignment="Center" />
+                </StackPanel>
+            </StackPanel>
+
+            <!-- Usage Breadown -->
+            <StackPanel Margin="0,24,0,0" Orientation="Vertical">
+                <TextBlock Foreground="#f8f8f8" Margin="0,0,0,0"  VerticalAlignment="Center" >
+                    <Run Text="TOTAL USAGE" /><TextBlock Margin="3,0"/><Run Foreground="#c8c8c8" x:Name="txtTotalUsage" d:Text="4.2 GB"/>
+                </TextBlock>
+            </StackPanel>
+
+            <!-- Keeping it simple for now -->
+            <StackPanel SnapsToDevicePixels="True" Margin="0,12,0,0" Orientation="Vertical" HorizontalAlignment="Left" >
+                
+                <StackPanel.Resources>
+                    <SolidColorBrush x:Key="color1" Color="#3db5ff" />
+                    <SolidColorBrush x:Key="color2" Color="#0074c2" />
+                    <SolidColorBrush x:Key="color3" Color="#004161" />
+                    <SolidColorBrush x:Key="color4" Color="#001b29" />
+                    <SolidColorBrush x:Key="LabelColor" Color="#f8f8f8" />
+                    <SolidColorBrush x:Key="StatColor" Color="#c8c8c8" />
+                    <Thickness x:Key="ItemPadding">0,5,10,5</Thickness>
+                    <Thickness x:Key="LabelSpacer">3,0</Thickness>
+                    <Style x:Key="OrbStyle" TargetType="{x:Type Ellipse}">
+                        <Setter Property="Margin" Value="0,-2,0,0" />
+                        <Setter Property="Width" Value="12"/>
+                        <Setter Property="Height" Value="12"/>
+                        <Setter Property="VerticalAlignment" Value="Center"/>
+                    </Style>
+                    <Style x:Key="LabelStyle" TargetType="{x:Type TextBlock}">
+                        <Setter Property="Foreground" Value="#f8f8f8"/>
+                        <Setter Property="Margin" Value="6,0,0,0" />
+                        <Setter Property="VerticalAlignment" Value="Center"/>
+                    </Style>
+                </StackPanel.Resources>
+                
+                <Border x:Name="usageBar" Width="500" Height="12" HorizontalAlignment="Left">
+                    <StackPanel Orientation="Horizontal"  >
+                        <StackPanel.Clip>
+                            <RectangleGeometry Rect="0,0,500,12" RadiusX="4" RadiusY="4"/>
+                        </StackPanel.Clip>
+                        <Rectangle x:Name="modsUsageSlice" Fill="{StaticResource color1}" d:Width="50"  />
+                        <Rectangle x:Name="mapsUsageSlice" Fill="{StaticResource color2}" d:Width="80"  />
+                        <Rectangle x:Name="cacheUsageSlice" Fill="{StaticResource color3}" d:Width="100"  />
+                        <Rectangle x:Name="otherUsageSlice" Fill="{StaticResource color4}" d:Width="270" />
+                    </StackPanel>
+                </Border>
+                
+                <WrapPanel Margin="0,10,0,0" Width="Auto" ItemWidth="Auto" HorizontalAlignment="Left">
+                    <StackPanel Orientation="Horizontal" Margin="{StaticResource ItemPadding}">
+                        <Ellipse Fill="{StaticResource color1}" Style="{StaticResource OrbStyle}"  />
+                        <TextBlock Style="{StaticResource LabelStyle}">
+                            <Run Text="MODS" /><TextBlock Margin="{StaticResource LabelSpacer}"/><Run Foreground="{StaticResource StatColor}" x:Name="txtModsUsage" d:Text="4.2 GB"/>
+                        </TextBlock>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="{StaticResource ItemPadding}">
+                        <Ellipse Fill="{StaticResource color2}" Style="{StaticResource OrbStyle}"  />
+                        <TextBlock Style="{StaticResource LabelStyle}">
+                            <Run Text="MAPS" /><TextBlock Margin="{StaticResource LabelSpacer}"/><Run Foreground="{StaticResource StatColor}" x:Name="txtMapsUsage" d:Text="4.2 GB"/>
+                        </TextBlock>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="{StaticResource ItemPadding}">
+                        <Ellipse Fill="{StaticResource color3}" Style="{StaticResource OrbStyle}" />
+                        <TextBlock Style="{StaticResource LabelStyle}">
+                            <Run Text="CACHE" /><TextBlock Margin="{StaticResource LabelSpacer}"/><Run Foreground="{StaticResource StatColor}" x:Name="txtCacheUsage" d:Text="4.2 GB"/>
+                        </TextBlock>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="{StaticResource ItemPadding}">
+                        <Ellipse Fill="{StaticResource color4}" Style="{StaticResource OrbStyle}"  />
+                        <TextBlock Style="{StaticResource LabelStyle}">
+                            <Run Text="OTHER" /><TextBlock Margin="{StaticResource LabelSpacer}"/><Run Foreground="{StaticResource StatColor}" x:Name="txtOtherUsage" d:Text="4.2 GB"/>
+                        </TextBlock>
+                    </StackPanel>
+                </WrapPanel>
+            </StackPanel>
+            <Button x:Name="btnDeleteCache" Style="{StaticResource L_PrimaryButtonStyle}" Margin="0,12,0,0" HorizontalAlignment="Left" FontSize="13" MinWidth="100" Height="34" Content="Delete Cache" Click="btnDeleteCache_Click"/>
+        </StackPanel>
+    </Grid>
+</UserControl>

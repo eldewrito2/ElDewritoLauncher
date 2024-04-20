@@ -1,0 +1,73 @@
+﻿<UserControl
+    x:Class="EDLauncher.Launcher.PlayTab"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="clr-namespace:EDLauncher.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    d:DesignHeight="500" d:DesignWidth="900" mc:Ignorable="d">
+    <UserControl.Resources>
+        <Storyboard x:Key="updateAvailableStoryBoard">
+            <DoubleAnimation RepeatBehavior="1x" Storyboard.TargetName="btnPlay" Storyboard.TargetProperty="(Button.RenderTransform).(TranslateTransform.X)" From="0" To="140" Duration="0:0:0.3">
+                <DoubleAnimation.EasingFunction>
+                    <QuadraticEase />
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+            <DoubleAnimation
+                BeginTime="0:0:0.1" RepeatBehavior="1x" Storyboard.TargetName="btnUpdate"
+                Storyboard.TargetProperty="Opacity" From="0" To="1" Duration="0:0:0.3">
+                <DoubleAnimation.EasingFunction>
+                    <QuadraticEase />
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+        </Storyboard>
+
+    </UserControl.Resources>
+    <Grid>
+        <Image Height="68" Margin="37,49,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Source="/Assets/ed-logo.png" Stretch="Uniform" />
+
+        <!--  Call to action  -->
+        <Grid Margin="50,210,0,0" HorizontalAlignment="Left" VerticalAlignment="Top">
+            <Button
+                x:Name="btnUpdate" Width="135" Height="45" 
+                d:Opacity="1" Click="btnUpdate_Clicked" Content="UPDATE" FontSize="18"
+                Opacity="0"
+                Style="{StaticResource L_PrimaryButtonStyle}" />
+            <Button
+                x:Name="btnPlay" Width="135" Height="45" 
+                Click="btnPlay_Clicked" Content="PLAY" FontSize="18"
+                Style="{StaticResource L_SecondaryButtonStyle}">
+                <Button.RenderTransform>
+                    <TranslateTransform d:X="140" />
+                </Button.RenderTransform>
+            </Button>
+        </Grid>
+
+        <TextBlock
+            x:Name="txtVersion" Margin="50,136,0,0" HorizontalAlignment="Left"
+            VerticalAlignment="Top" d:Text="0.6.1-debug.1692554830" FontSize="24"
+            Foreground="#aaa3afcf" />
+
+        <!--  Content or other controls  -->
+        <Grid Margin="10" HorizontalAlignment="Left" VerticalAlignment="Bottom" TextBlock.FontSize="15">
+            <StackPanel Name="updateCheckStatus" Orientation="Horizontal" d:Visibility="Visible" Visibility="Collapsed" >
+                <controls:FontIcon VerticalAlignment="Center" Foreground="#55a3afcf" Icon="&#xf1ce;" Spin="True" Duration="0:0:2" />
+                <TextBlock x:Name="txtStatus1" Margin="8,0,0,0" VerticalAlignment="Center" Foreground="#55a3afcf" d:Text="Checking for updates..." />
+            </StackPanel>
+            <StackPanel Name="updateCheckFailed" Orientation="Horizontal" Visibility="Collapsed">
+                <TextBlock x:Name="txtUpdateCheckError" Margin="8,0,0,0" VerticalAlignment="Center">
+                    <Run Text="Update check failed."  Foreground="#eb3446" />
+                    <Hyperlink x:Name="updateCheckErrorDetailsLink" Foreground="#eb3446" Click="updateCheckErrorDetailsLink_Click">See Details</Hyperlink>
+                </TextBlock>
+            </StackPanel>
+        </Grid>
+
+        <StackPanel Margin="0,0,0,0" HorizontalAlignment="Right" VerticalAlignment="Bottom" Orientation="Horizontal">
+            <!--<Button Margin="4,4,4,0" Style="{StaticResource SocialButtonStyle}" Tag="ed" Content="{StaticResource EldewritoIcon}" Click="SocialButton_Clicked" />-->
+            <Button Click="SocialButton_Clicked" Content="{StaticResource RedditIcon}" Style="{StaticResource SocialButtonStyle}" Tag="reddit" />
+            <Button Click="SocialButton_Clicked" Content="{StaticResource DiscordIcon}" Style="{StaticResource SocialButtonStyle}" Tag="discord" />
+            <!--<Button Style="{StaticResource SocialButtonStyle}" Tag="twitter" Content="{StaticResource TwitterIcon}" Click="SocialButton_Clicked" />-->
+        </StackPanel>
+
+    </Grid>
+</UserControl>

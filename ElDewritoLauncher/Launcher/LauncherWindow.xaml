@@ -1,0 +1,52 @@
+﻿<controls:WindowBase
+    x:Class="EDLauncher.Launcher.LauncherWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="clr-namespace:EDLauncher.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:EDLauncher.Launcher"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="LauncherWindow" Width="875" Height="504" SnapsToDevicePixels="True"
+    Style="{StaticResource WindowBase}"
+    mc:Ignorable="d">
+    <Window.Resources>
+        <!--  Style for the Tab Header  -->
+        <Style x:Key="TabRadioButton" TargetType="{x:Type controls:TabHeader}">
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type controls:TabHeader}">
+                        <Grid>
+                            <Border x:Name="TabBorder" Width="Auto" Padding="20,5" HorizontalAlignment="Left" Background="Transparent" TextBlock.FontSize="28">
+                                <ContentPresenter x:Name="content" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </Border>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
+    <Window.Background>
+        <ImageBrush ImageSource="/Assets/launcher_background.jpg" RenderOptions.BitmapScalingMode="HighQuality" Stretch="UniformToFill" />
+    </Window.Background>
+
+    <controls:WindowBase.BackgroundLayer>
+        <!--  HACK: darken the background a bit  -->
+        <Border Background="Black" CornerRadius="12" IsHitTestVisible="False" Opacity="0.2" />
+    </controls:WindowBase.BackgroundLayer>
+
+    <Grid>
+        <!--  Tab Headers  -->
+        <StackPanel Margin="20,30" HorizontalAlignment="Left" VerticalAlignment="Top" Orientation="Horizontal">
+            <controls:TabHeader x:Name="playTabHeader" Checked="playTabHeader_Checked" Content="PLAY" Cursor="Hand" GroupName="tabs" Style="{StaticResource TabRadioButton}" />
+            <controls:TabHeader x:Name="newsTabHeader" Checked="playTabHeader_Checked" Content="NEWS" Cursor="Hand" GroupName="tabs" Style="{StaticResource TabRadioButton}" />
+            <controls:TabHeader x:Name="settingsTabHeader" Checked="playTabHeader_Checked" Content="SETTINGS" Cursor="Hand" GroupName="tabs" Style="{StaticResource TabRadioButton}" />
+        </StackPanel>
+        <!--  Tab Content  -->
+        <ContentControl x:Name="tabContent" Margin="16,80,16,16" />
+        <!--  Update dialog. this should be moved out of here  -->
+        <local:UpdateDialog x:Name="updateDlg" Visibility="Collapsed" />
+    </Grid>
+
+</controls:WindowBase>

@@ -1,0 +1,79 @@
+﻿<UserControl x:Class="EDLauncher.Launcher.Settings.Pages.SeedingConfigPage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:app="clr-namespace:EDLauncher"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:EDLauncher.Launcher.Settings.Pages"
+             xmlns:utility="clr-namespace:EDLauncher.Utility"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             d:DesignHeight="450" d:DesignWidth="800"
+             mc:Ignorable="d"
+             >
+    <UserControl.Resources>
+
+
+
+    </UserControl.Resources>
+    <Grid>
+        <StackPanel Orientation="Vertical">
+            <!--  Back button  -->
+            <Button x:Name="btnBack"
+                    Margin="0,0,0,4" HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    Click="btnBack_Click" Content="&#xf060;"
+                    FontFamily="{StaticResource FontAwesome}"
+                    FontSize="16"
+                    Style="{StaticResource L_BackButtonStyle}"
+                    />
+
+            <!--  Seed directory  -->
+            <!--<StackPanel IsEnabled="False" Style="{StaticResource L_SettingStyle}">
+                <TextBlock Style="{StaticResource L_SettingsLabelStyle}" Text="SEED DIRECTORY" />
+                <TextBlock Margin="0,0,0,8" Style="{StaticResource L_SettingsHelpStyle}" Text="The directory that contains the game files to be seeded" />
+                <StackPanel Orientation="Horizontal">
+                    <TextBox x:Name="tbSeedDirectory"
+                             Width="400"
+                             HorizontalAlignment="Left" VerticalAlignment="Center"
+                             Style="{StaticResource L_SettingsTextBoxStyle}"
+                             />
+                    <Button Width="45" Height="32"
+                            Margin="4,0,0,0" VerticalAlignment="Center"
+                            Content="..."
+                            Style="{StaticResource L_PrimaryButtonStyle}"
+                            />
+                </StackPanel>
+            </StackPanel>-->
+
+            <!--  Upload rate limit  -->
+            <StackPanel Style="{StaticResource L_SettingStyle}">
+                <TextBlock Style="{StaticResource L_SettingsLabelStyle}" Text="UPLOAD RATE LIMIT" />
+                <TextBlock Margin="0,0,0,8" Style="{StaticResource L_SettingsHelpStyle}" Text="Limit the upload rate" />
+                <StackPanel Orientation="Horizontal">
+                    <TextBox x:Name="tbUpdateRateLimit" Width="100"
+                             TextChanged="TextBox_TextChanged"
+                             utility:NumericTextBoxBehavior.IsNumericOnly="True"
+                             HorizontalAlignment="Left" VerticalAlignment="Center"
+                             Style="{StaticResource L_SettingsTextBoxStyle}"
+                             Text="{Binding Source={x:Static app:App.LauncherSettings}, Path=SeedUploadRateLimit, Mode=TwoWay, ValidatesOnExceptions=True}"
+                             LostFocus="tbUpdateRateLimit_LostFocus"
+                             />
+                    <TextBlock Margin="8,0,0,0" VerticalAlignment="Center" Text="KB/S" />
+                    <TextBlock Margin="12,0,0,0" VerticalAlignment="Center" x:Name="txtPreviewUploadRateLimit" Text="" />
+                </StackPanel>
+            </StackPanel>
+
+            <!--  Auto seed  -->
+            <StackPanel Style="{StaticResource L_SettingStyle}">
+                <CheckBox Content="AUTO SEED" IsChecked="{Binding Source={x:Static app:App.LauncherSettings}, Path=EnableAutoSeed, Mode=TwoWay}" Style="{StaticResource L_SettingsCheckBoxStyle}" />
+                <TextBlock Style="{StaticResource L_SettingsHelpStyle}" Text="Start seeding when the launcher is opened" />
+            </StackPanel>
+
+            <!--  Disable in game  --><!--
+            <StackPanel IsEnabled="False" Style="{StaticResource L_SettingStyle}">
+                <CheckBox Content="DISABLE IN GAME" Style="{StaticResource L_SettingsCheckBoxStyle}" />
+                <TextBlock Style="{StaticResource L_SettingsHelpStyle}" Text="Stop seeding while in game" />
+            </StackPanel>-->
+
+        </StackPanel>
+    </Grid>
+</UserControl>

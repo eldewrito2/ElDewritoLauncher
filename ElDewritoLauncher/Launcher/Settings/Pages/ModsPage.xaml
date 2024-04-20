@@ -1,0 +1,89 @@
+﻿<UserControl x:Class="EDLauncher.Launcher.Settings.Pages.ModsPage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:controls="clr-namespace:EDLauncher.Controls"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:utility="clr-namespace:EDLauncher.Utility"
+             Margin="-20,-8"
+             d:DesignHeight="450" d:DesignWidth="800"
+             mc:Ignorable="d"
+             >
+    <UserControl.InputBindings>
+        <KeyBinding Key="Delete" Command="{x:Static ApplicationCommands.Delete}" />
+    </UserControl.InputBindings>
+    <UserControl.CommandBindings>
+        <CommandBinding Command="{x:Static ApplicationCommands.Delete}" Executed="DeleteCommand_Executed" />
+    </UserControl.CommandBindings>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <Grid Margin="8">
+
+            <!--  ToolBar  -->
+            <StackPanel HorizontalAlignment="Left" Orientation="Horizontal">
+                <Button x:Name="btnOpenFolder"
+                        Margin="0"
+                        MinWidth="100" Height="32"
+                        VerticalAlignment="Center"
+                        Click="btnOpenFolder_Click" Content="Open Folder"
+                        FontSize="13"
+                        Style="{StaticResource L_PrimaryButtonStyle}"
+                        />
+            </StackPanel>
+
+            <!--  Search  -->
+            <StackPanel HorizontalAlignment="Right" VerticalAlignment="Center" Orientation="Horizontal">
+                <TextBox Width="200"
+                         FontSize="13"
+                         Padding="3"
+                         Style="{StaticResource L_TextBoxStyle}"
+                         TextChanged="tbSearch_TextChanged"
+                         />
+            </StackPanel>
+
+        </Grid>
+
+        <!--  Mod List  -->
+        <Grid Grid.Row="1">
+            <ListView x:Name="modList"
+                      BorderThickness="0" FontSize="14"
+                      ItemsSource="{Binding Path=ModsCollectionView, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                      Style="{StaticResource L_ListViewStyle}"
+                      SelectionChanged="modList_SelectionChanged"
+                      >
+                <ListView.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem x:Name="miModDelete" Header="Delete" Click="miModDelete_Click" />
+                        <MenuItem x:Name="miModOpenFolder" Header="Open folder" Click="miModOpenFolder_Click" />
+                    </ContextMenu>
+                </ListView.ContextMenu>
+                <ListView.View>
+                    <GridView ColumnHeaderContainerStyle="{StaticResource L_GridViewColumnHeaderStyle}">
+                        <GridViewColumn Width="140" DisplayMemberBinding="{Binding Name}" Header="NAME" />
+                        <GridViewColumn Width="100" DisplayMemberBinding="{Binding Author}" Header="AUTHOR" />
+                        <GridViewColumn Width="80" DisplayMemberBinding="{Binding Version}" Header="VERSION" />
+                        <GridViewColumn Width="100" DisplayMemberBinding="{Binding Size, Converter={x:Static utility:FileSizeToStringConverter.Instance}}" Header="SIZE" />
+                        <GridViewColumn Width="150" DisplayMemberBinding="{Binding FileName}" Header="FILE" />
+                    </GridView>
+                </ListView.View>
+                <ListView.CommandBindings>
+                    <CommandBinding Command="{x:Static ApplicationCommands.Delete}" Executed="DeleteCommand_Executed" />
+                </ListView.CommandBindings>
+            </ListView>
+            <controls:FontIcon x:Name="loadingSpinner" VerticalAlignment="Center" HorizontalAlignment="Center" Icon="&#xf1ce;" Spin="True" FontSize="60" Opacity="0.1" />
+        </Grid>
+        <Grid Grid.Row="2" Margin="8">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center">
+                <TextBlock x:Name="txtStatus" Foreground="#a3afcf" FontSize="13"  Opacity="0.5" />
+            </StackPanel>
+        </Grid>
+        
+
+    </Grid>
+</UserControl>

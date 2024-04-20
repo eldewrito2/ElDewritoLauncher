@@ -1,0 +1,6 @@
+<Project>
+	<PropertyGroup>
+		<BaseIntermediateOutputPath>$(SolutionDir)\artifacts\obj</BaseIntermediateOutputPath>
+		<BaseOutputPath>$(SolutionDir)\artifacts\bin</BaseOutputPath>
+	</PropertyGroup>
+</Project>

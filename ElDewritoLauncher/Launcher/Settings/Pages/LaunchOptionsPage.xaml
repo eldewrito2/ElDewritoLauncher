@@ -1,0 +1,55 @@
+﻿<UserControl x:Class="EDLauncher.Launcher.Settings.Pages.LaunchOptionsPage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:app="clr-namespace:EDLauncher"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:EDLauncher.Launcher.Settings.Pages"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             d:DesignHeight="450" d:DesignWidth="800"
+             mc:Ignorable="d"
+             >
+    <StackPanel Orientation="Vertical">
+        <StackPanel Style="{StaticResource L_SettingStyle}">
+            <CheckBox Content="DO NOT CLOSE" IsChecked="{Binding Source={x:Static app:App.LauncherSettings}, Path=DoNotClose, Mode=TwoWay}"  Style="{StaticResource L_SettingsCheckBoxStyle}" />
+            <TextBlock Margin="0,0" Style="{StaticResource L_SettingsHelpStyle}" Text="Keep the launcher open in the background while the game is running" />
+        </StackPanel>
+        
+        <StackPanel Style="{StaticResource L_SettingStyle}">
+            <TextBlock Style="{StaticResource L_SettingsLabelStyle}" Text="LAUNCH ARGUMENTS" />
+            <TextBlock Margin="0,0,0,12" Style="{StaticResource L_SettingsHelpStyle}" Text="Specify any arguments to launch the game with" />
+            <TextBox Width="500"
+                     HorizontalAlignment="Left"
+                     FontSize="15"
+                     Style="{StaticResource L_SettingsTextBoxStyle}"
+                     Text="{Binding Source={x:Static app:App.LauncherSettings}, Path=LaunchArguments, Mode=TwoWay}"
+                     />
+
+            <ScrollViewer Height="140" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+                <StackPanel Orientation="Vertical" TextBlock.Foreground="#a3afcf" Opacity="0.5" Margin="0,8,0,0">
+                    <StackPanel.Resources>
+                        <Style x:Key="LabelStyle" TargetType="{x:Type TextBlock}">
+                            <Setter Property="Width" Value="120"/>
+                        </Style>
+                    </StackPanel.Resources>
+                    <StackPanel Orientation="Horizontal" Margin="0,6,0,0">
+                        <TextBlock Text="-connect" Style="{StaticResource LabelStyle}"/>
+                        <TextBlock Text="Connect to a server"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0,6,0,0">
+                        <TextBlock Text="-dedicated"  Style="{StaticResource LabelStyle}"/>
+                        <TextBlock Text="Run a dedicated server"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0,6,0,0">
+                        <TextBlock Text="-highpriority" Style="{StaticResource LabelStyle}"/>
+                        <TextBlock Text="Runs the process as high priority. (May improve performance)"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0,6,0,0">
+                        <TextBlock Text="-webdebug" Style="{StaticResource LabelStyle}"/>
+                        <TextBlock Text="Enable chrome dev tools"/>
+                    </StackPanel>
+                </StackPanel>
+            </ScrollViewer>
+        </StackPanel>
+        
+    </StackPanel>
+</UserControl>

@@ -1,0 +1,185 @@
+﻿<UserControl x:Class="EDLauncher.Launcher.Settings.Pages.SeedingStatusPage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:app="clr-namespace:EDLauncher"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:EDLauncher.Launcher.Settings.Pages"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:utility="clr-namespace:EDLauncher.Utility"
+             d:DesignHeight="450" d:DesignWidth="800"
+             mc:Ignorable="d"
+             >
+    <UserControl.Resources>
+        <!-- <SolidColorBrush x:Key="SeperatorColor" Color="#11a3afcf" />-->
+        <LinearGradientBrush x:Key="SeperatorColor" StartPoint="0,1" EndPoint="1,0">
+            <GradientStop Offset="0" Color="#33a3afcf" />
+            <GradientStop Offset="1" Color="#00000000" />
+        </LinearGradientBrush>
+
+        <Style x:Key="SeparatorStyle" TargetType="{x:Type Border}">
+            <Setter Property="Width" Value="500" />
+            <Setter Property="HorizontalAlignment" Value="Left" />
+            <Setter Property="BorderBrush" Value="{StaticResource SeperatorColor}" />
+            <Setter Property="BorderThickness" Value="0,0,0,1" />
+            <Setter Property="Margin" Value="0,10" />
+        </Style>
+
+        <Style x:Key="LabelStyle" TargetType="{x:Type TextBlock}">
+            <Setter Property="Width" Value="150" />
+            <Setter Property="HorizontalAlignment" Value="Left" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+        </Style>
+        <Style x:Key="StatStyle" TargetType="{x:Type TextBlock}">
+            <Setter Property="Width" Value="150" />
+            <Setter Property="HorizontalAlignment" Value="Left" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="Foreground" Value="#a3afcf" />
+            <Setter Property="Opacity" Value="1" />
+            <Setter Property="Text" Value="-" />
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding Path=Text, RelativeSource={RelativeSource Mode=Self}}" Value="-">
+                    <Setter Property="Opacity" Value="0.5" />
+                </DataTrigger>
+
+            </Style.Triggers>
+        </Style>
+
+    </UserControl.Resources>
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <Grid>
+
+            <StackPanel IsEnabled="True" Orientation="Vertical">
+                <StackPanel Style="{StaticResource L_SettingStyle}">
+                    <StackPanel Orientation="Vertical" TextBlock.FontSize="14">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Style="{StaticResource LabelStyle}" Text="STATUS" />
+                            <TextBlock x:Name="txtStatus" TextWrapping="Wrap" MaxWidth="300">
+                                <TextBlock.Style>
+                                    <Style BasedOn="{StaticResource StatStyle}" TargetType="{x:Type TextBlock}">
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding Path=Tag, ElementName=txtStatus}" Value="success">
+                                                <Setter Property="Foreground" Value="#2ecc71" />
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding Path=Tag, ElementName=txtStatus}" Value="error">
+                                                <Setter Property="Foreground" Value="#e74c3c" />
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </TextBlock.Style>
+                            </TextBlock>
+
+                            <ProgressBar x:Name="progress"
+                                         Width="100" Height="4"
+                                         Margin="8,0,0,0" HorizontalAlignment="Left"
+                                         VerticalAlignment="Center"
+                                         d:Visibility="Visible" IsIndeterminate="True"
+                                         Style="{StaticResource LauncherProgressBarStyle}"
+                                         Visibility="Collapsed"
+                                         />
+                        </StackPanel>
+                        <Border Style="{StaticResource SeparatorStyle}" />
+                        <!--  Time Active  -->
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Style="{StaticResource LabelStyle}" Text="TIME ACTIVE" />
+                            <TextBlock x:Name="txtTimeActive" Style="{StaticResource StatStyle}" />
+                        </StackPanel>
+                        <Border Style="{StaticResource SeparatorStyle}" />
+                        <!--  Uploaded  -->
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Style="{StaticResource LabelStyle}" Text="UPLOADED" />
+                            <TextBlock x:Name="txtTotalUpload" Style="{StaticResource StatStyle}" />
+                        </StackPanel>
+                        <Border Style="{StaticResource SeparatorStyle}" />
+                        <!--  Upload Rate  -->
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Style="{StaticResource LabelStyle}" Text="UPLOAD RATE" />
+                            <TextBlock x:Name="txtUploadRate" Style="{StaticResource StatStyle}" />
+                        </StackPanel>
+                        <Border Style="{StaticResource SeparatorStyle}" />
+                        <!--  Seeds  -->
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Style="{StaticResource LabelStyle}" Text="SEEDS" />
+                            <TextBlock x:Name="txtSeeds" Style="{StaticResource StatStyle}" />
+                        </StackPanel>
+                        <Border Style="{StaticResource SeparatorStyle}" />
+                        <!--  Peers  -->
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Style="{StaticResource LabelStyle}" Text="PEERS" />
+                            <TextBlock x:Name="txtPeers" Style="{StaticResource StatStyle}" />
+                        </StackPanel>
+                        <Border Style="{StaticResource SeparatorStyle}" />
+                    </StackPanel>
+                </StackPanel>
+
+                <StackPanel Margin="0,0,10,0" Orientation="Horizontal">
+                    <Button x:Name="btnStart"
+                            Padding="10,0"
+                            Height="32" 
+                            Margin="0" HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            Click="btnStart_Click"
+                            >
+                        <Button.Style>
+                            <Style BasedOn="{StaticResource L_PrimaryButtonStyle}" TargetType="{x:Type Button}">
+                                <Setter Property="Content">
+                                    <Setter.Value>
+                                        <TextBlock>
+                                            <Run FontFamily="{StaticResource FontAwesome}" Text="&#xf04b; " />
+                                            <Run Text="Start" />
+                                        </TextBlock>
+                                    </Setter.Value>
+                                </Setter>
+                                <Style.Triggers>
+
+                                    <DataTrigger Binding="{Binding Source={x:Static app:App.LauncherState}, Path=IsSeeding}" Value="True">
+                                        <Setter Property="Content">
+                                            <Setter.Value>
+                                                <TextBlock>
+                                                    <Run FontFamily="{StaticResource FontAwesome}" Text="&#xf04d; " />
+                                                    <Run Text="Stop" />
+                                                </TextBlock>
+                                            </Setter.Value>
+                                        </Setter>
+                                    </DataTrigger>
+
+                                    <DataTrigger Binding="{Binding Path=(utility:AttachedProperties.IsBusy), RelativeSource={RelativeSource Mode=Self}}" Value="True">
+                                        <Setter Property="Content">
+                                            <Setter.Value>
+                                                <TextBlock Text="Stopping" />
+                                            </Setter.Value>
+                                        </Setter>
+                                    </DataTrigger>
+
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+
+                    </Button>
+                    <Button x:Name="btnConfigure"
+                            Height="32" MinWidth="40"
+                            Margin="6,0,0,0" HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            Click="btnConfigure_Click" Content="&#xf013;"
+                            FontFamily="{StaticResource FontAwesome}"
+                            FontSize="15"
+                            Style="{StaticResource L_SecondaryButtonStyle}"
+                            />
+
+                </StackPanel>
+
+                <StackPanel Margin="0,24,0,0" Style="{StaticResource L_SettingStyle}">
+                    <TextBlock>
+                        <Run Foreground="#77a3afcf" Text="Seeding helps us keep the game alive" />
+                        <Hyperlink Style="{StaticResource L_HyperlinkStyle}" x:Name="linkLearnMore" Click="linkLearnMore_Click">Learn More</Hyperlink>
+                    </TextBlock>
+                    <TextBlock Margin="0,8,0,0" Foreground="#77a3afcf">
+                        <Hyperlink x:Name="linkTorrentFile" Style="{StaticResource L_HyperlinkStyle}" Click="linkTorrentFile_Click">Torrent File</Hyperlink>
+                        <TextBlock  Margin="4,0" Text="|"/>
+                        <Hyperlink x:Name="linkMagnet" Style="{StaticResource L_HyperlinkStyle}" Click="linkMagnet_Click">Copy Magnet Link</Hyperlink>
+                    </TextBlock>
+      
+                </StackPanel>
+
+            </StackPanel>
+        </Grid>
+    </ScrollViewer>
+</UserControl>

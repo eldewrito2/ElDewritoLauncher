@@ -1,0 +1,96 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34302.85
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ElDewritoLauncher", "ElDewritoLauncher\ElDewritoLauncher.csproj", "{CAA964C7-0FEE-4552-A310-997E569E9627}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "InstallerLib", "InstallerLib\InstallerLib.shproj", "{92DDD784-F9C2-460A-AF73-0DB07F8C845E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TorrentLib", "TorrentLib\TorrentLib\TorrentLib.csproj", "{AB4A5E39-DFA2-4B5F-87DA-96DEDD9B43A6}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TorrentLib.Native", "TorrentLib\TorrentLib.Native\TorrentLib.Native.vcxproj", "{7ED3CCBC-7589-4E32-8E14-856A0E135F96}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "ElDewritoLauncher.Core", "ElDewritoLauncher.Core\ElDewritoLauncher.Core.shproj", "{57D71681-E245-43B2-AB6F-A3F7ED86130C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+		Test|Any CPU = Test|Any CPU
+		Test|x64 = Test|x64
+		Test|x86 = Test|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CAA964C7-0FEE-4552-A310-997E569E9627}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CAA964C7-0FEE-4552-A310-997E569E9627}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CAA964C7-0FEE-4552-A310-997E569E9627}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{CAA964C7-0FEE-4552-A310-997E569E9627}.Debug|x64.Build.0 = Debug|Any CPU
+		{CAA964C7-0FEE-4552-A310-997E569E9627}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{CAA964C7-0FEE-4552-A310-997E569E9627}.Debug|x86.Build.0 = Debug|Any CPU
+		{CAA964C7-0FEE-4552-A310-997E569E9627}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CAA964C7-0FEE-4552-A310-997E569E9627}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CAA964C7-0FEE-4552-A310-997E569E9627}.Release|x64.ActiveCfg = Release|Any CPU
+		{CAA964C7-0FEE-4552-A310-997E569E9627}.Release|x64.Build.0 = Release|Any CPU
+		{CAA964C7-0FEE-4552-A310-997E569E9627}.Release|x86.ActiveCfg = Release|Any CPU
+		{CAA964C7-0FEE-4552-A310-997E569E9627}.Release|x86.Build.0 = Release|Any CPU
+		{CAA964C7-0FEE-4552-A310-997E569E9627}.Test|Any CPU.ActiveCfg = Test|Any CPU
+		{CAA964C7-0FEE-4552-A310-997E569E9627}.Test|Any CPU.Build.0 = Test|Any CPU
+		{CAA964C7-0FEE-4552-A310-997E569E9627}.Test|x64.ActiveCfg = Test|Any CPU
+		{CAA964C7-0FEE-4552-A310-997E569E9627}.Test|x64.Build.0 = Test|Any CPU
+		{CAA964C7-0FEE-4552-A310-997E569E9627}.Test|x86.ActiveCfg = Test|Any CPU
+		{CAA964C7-0FEE-4552-A310-997E569E9627}.Test|x86.Build.0 = Test|Any CPU
+		{AB4A5E39-DFA2-4B5F-87DA-96DEDD9B43A6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AB4A5E39-DFA2-4B5F-87DA-96DEDD9B43A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AB4A5E39-DFA2-4B5F-87DA-96DEDD9B43A6}.Debug|x64.ActiveCfg = Debug|x64
+		{AB4A5E39-DFA2-4B5F-87DA-96DEDD9B43A6}.Debug|x64.Build.0 = Debug|x64
+		{AB4A5E39-DFA2-4B5F-87DA-96DEDD9B43A6}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{AB4A5E39-DFA2-4B5F-87DA-96DEDD9B43A6}.Debug|x86.Build.0 = Debug|Any CPU
+		{AB4A5E39-DFA2-4B5F-87DA-96DEDD9B43A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AB4A5E39-DFA2-4B5F-87DA-96DEDD9B43A6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AB4A5E39-DFA2-4B5F-87DA-96DEDD9B43A6}.Release|x64.ActiveCfg = Release|x64
+		{AB4A5E39-DFA2-4B5F-87DA-96DEDD9B43A6}.Release|x64.Build.0 = Release|x64
+		{AB4A5E39-DFA2-4B5F-87DA-96DEDD9B43A6}.Release|x86.ActiveCfg = Release|Any CPU
+		{AB4A5E39-DFA2-4B5F-87DA-96DEDD9B43A6}.Release|x86.Build.0 = Release|Any CPU
+		{AB4A5E39-DFA2-4B5F-87DA-96DEDD9B43A6}.Test|Any CPU.ActiveCfg = Debug|Any CPU
+		{AB4A5E39-DFA2-4B5F-87DA-96DEDD9B43A6}.Test|Any CPU.Build.0 = Debug|Any CPU
+		{AB4A5E39-DFA2-4B5F-87DA-96DEDD9B43A6}.Test|x64.ActiveCfg = Debug|x64
+		{AB4A5E39-DFA2-4B5F-87DA-96DEDD9B43A6}.Test|x64.Build.0 = Debug|x64
+		{AB4A5E39-DFA2-4B5F-87DA-96DEDD9B43A6}.Test|x86.ActiveCfg = Debug|Any CPU
+		{AB4A5E39-DFA2-4B5F-87DA-96DEDD9B43A6}.Test|x86.Build.0 = Debug|Any CPU
+		{7ED3CCBC-7589-4E32-8E14-856A0E135F96}.Debug|Any CPU.ActiveCfg = Debug|x64
+		{7ED3CCBC-7589-4E32-8E14-856A0E135F96}.Debug|Any CPU.Build.0 = Debug|x64
+		{7ED3CCBC-7589-4E32-8E14-856A0E135F96}.Debug|x64.ActiveCfg = Debug|x64
+		{7ED3CCBC-7589-4E32-8E14-856A0E135F96}.Debug|x64.Build.0 = Debug|x64
+		{7ED3CCBC-7589-4E32-8E14-856A0E135F96}.Debug|x86.ActiveCfg = Debug|Win32
+		{7ED3CCBC-7589-4E32-8E14-856A0E135F96}.Debug|x86.Build.0 = Debug|Win32
+		{7ED3CCBC-7589-4E32-8E14-856A0E135F96}.Release|Any CPU.ActiveCfg = Release|x64
+		{7ED3CCBC-7589-4E32-8E14-856A0E135F96}.Release|Any CPU.Build.0 = Release|x64
+		{7ED3CCBC-7589-4E32-8E14-856A0E135F96}.Release|x64.ActiveCfg = Release|x64
+		{7ED3CCBC-7589-4E32-8E14-856A0E135F96}.Release|x64.Build.0 = Release|x64
+		{7ED3CCBC-7589-4E32-8E14-856A0E135F96}.Release|x86.ActiveCfg = Release|Win32
+		{7ED3CCBC-7589-4E32-8E14-856A0E135F96}.Release|x86.Build.0 = Release|Win32
+		{7ED3CCBC-7589-4E32-8E14-856A0E135F96}.Test|Any CPU.ActiveCfg = Debug|x64
+		{7ED3CCBC-7589-4E32-8E14-856A0E135F96}.Test|Any CPU.Build.0 = Debug|x64
+		{7ED3CCBC-7589-4E32-8E14-856A0E135F96}.Test|x64.ActiveCfg = Debug|x64
+		{7ED3CCBC-7589-4E32-8E14-856A0E135F96}.Test|x64.Build.0 = Debug|x64
+		{7ED3CCBC-7589-4E32-8E14-856A0E135F96}.Test|x86.ActiveCfg = Debug|Win32
+		{7ED3CCBC-7589-4E32-8E14-856A0E135F96}.Test|x86.Build.0 = Debug|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {53124E69-23A6-44F7-ABE7-8CD847A3B2C3}
+	EndGlobalSection
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		ElDewritoLauncher.Core\ElDewritoLauncher.Core.projitems*{57d71681-e245-43b2-ab6f-a3f7ed86130c}*SharedItemsImports = 13
+		InstallerLib\InstallerLib.projitems*{92ddd784-f9c2-460a-af73-0db07f8c845e}*SharedItemsImports = 13
+		ElDewritoLauncher.Core\ElDewritoLauncher.Core.projitems*{caa964c7-0fee-4552-a310-997e569e9627}*SharedItemsImports = 5
+		InstallerLib\InstallerLib.projitems*{caa964c7-0fee-4552-a310-997e569e9627}*SharedItemsImports = 5
+	EndGlobalSection
+EndGlobal

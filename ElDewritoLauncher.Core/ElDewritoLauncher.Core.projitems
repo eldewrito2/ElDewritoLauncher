@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects Condition="'$(MSBuildVersion)' == '' Or '$(MSBuildVersion)' &lt; '16.0'">$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>57d71681-e245-43b2-ab6f-a3f7ed86130c</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>EDLauncher.Core</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Constants.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Install\FileLockUtility.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Install\EDInstaller.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Release\FakeReleaseService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Install\InstallDirectory.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Install\InstallOptions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Release\IReleaseService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Release\ReleaseInfo.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Torrents\DhtCache.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Torrents\DhtAannounceService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Torrents\DhtReleaseService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Torrents\PeerBootstrapper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Torrents\PeerCache.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Torrents\TorrentDownloadSizeCalculator.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Torrents\TorrentFileMapper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Torrents\TorrentFileTruncator.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Torrents\TorrentPackage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Torrents\TorrentPackageCache.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Torrents\TorrentDownload.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Torrents\TorrentPackageDownloader.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Torrents\TorrentSessionFactory.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utility\StringExtensions.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="$(MSBuildThisFileDirectory)Release\" />
+  </ItemGroup>
+</Project>
