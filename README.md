@@ -10,7 +10,7 @@ ElDewrito Launcher helps you install and play the latest version of ElDewrito, a
 
 **NOTE**: The ElDewrito Launcher uses a Peer-To-Peer (P2P) network to deliver updates. If prompted please allow it through your firewall.
 
-For additional info and help checkout our [Install guide](eldewrito.org/guide)
+For additional info and help checkout our [Install guide](https://eldewrito.org/guide)
 
 ## Support the project :heart:
 
