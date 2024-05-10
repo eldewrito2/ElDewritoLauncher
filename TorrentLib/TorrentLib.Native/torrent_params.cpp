@@ -103,4 +103,10 @@ API void torrent_params_apply(torrent_add_params* p, char* data, int data_size)
 
 	// upload_limit
 	p->upload_limit = entry.dict_find_int_value("upload_limit", -1);
+
+	// total_uploaded
+	p->total_uploaded = entry.dict_find_int_value("total_uploaded", 0);
+
+	// seeding time
+	p->seeding_time = entry.dict_find_int_value("seeding_time", 0);
 }
