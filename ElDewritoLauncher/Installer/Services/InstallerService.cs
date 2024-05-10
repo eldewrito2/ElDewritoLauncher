@@ -1,4 +1,6 @@
-﻿using EDLauncher.Core.Install;
+﻿using EDLauncher.Core;
+using EDLauncher.Core.Install;
+using EDLauncher.Launcher.Models;
 using InstallerLib.Events;
 using InstallerLib.Install;
 using InstallerLib.Packages;
@@ -9,6 +11,7 @@ using NuGet.Versioning;
 using System;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using System.Text.Json;
 using System.Threading.Tasks;
 

@@ -85,7 +85,7 @@
                         </Style>
                         <Style TargetType="{x:Type Line}" x:Key="{x:Static markdig:Styles.ThematicBreakStyleKey}">
                             <Setter Property="Stretch" Value="Fill" />
-                            <Setter Property="Stroke" Value="Black" />
+                            <Setter Property="Stroke" Value="#33a3afcf" />
                         </Style>
                         <Style TargetType="{x:Type Span}" x:Key="{x:Static markdig:Styles.SubscriptStyleKey}">
                             <Setter Property="Typography.Variants" Value="Subscript" />

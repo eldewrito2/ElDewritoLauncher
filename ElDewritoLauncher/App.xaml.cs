@@ -124,6 +124,21 @@ namespace EDLauncher
             bool hasUnfinishedInstall = InstallerService.DetectUnfinishedInstall();
             if (currentVersion == null || hasUnfinishedInstall)
             {
+                var lastRun = LastRunInfo.GetLastRunInfo();
+                if(lastRun != null)
+                {
+                    MessageBoxResult decision = MessageBox.Show(
+                        $"An existing install of ElDewrito was found in\r\n\r\n\"{lastRun.Path}\"\r\n\r\nDo you want to use this one instead?", 
+                        "Existing Install Found",
+                        MessageBoxButton.YesNo,
+                        MessageBoxImage.Question);
+                    if(decision == MessageBoxResult.Yes)
+                    {
+                        RelaunchUnelevated(lastRun.Path);
+                        return Task.CompletedTask;
+                    }
+                }
+
                 return StartInstallerAsync(hasUnfinishedInstall);
             }
             else
@@ -223,6 +238,9 @@ namespace EDLauncher
                 Seeder.StartSeeding();
             }
 
+            // Finally update the last run info
+            LastRunInfo.UpdateLastRunInfo(LauncherState.CurrentVersion, Environment.CurrentDirectory);
+
             return Task.CompletedTask;
         }
 
@@ -285,25 +303,7 @@ namespace EDLauncher
             services.AddSingleton<IPackageCache, TorrentPackageCache>();
             services.AddScoped(_ => new TorrentPackageDownloadOptions(
                 Timeout: TimeSpan.FromMinutes(2),
-                Trackers: new string[] {
-                    "udp://tracker.opentrackr.org:1337/announce",
-                    "udp://open.demonii.com:1337/announce",
-                    "udp://open.stealth.si:80/announce",
-                    "udp://tracker-udp.gbitt.info:80/announce",
-                    "https://tracker.gbitt.info:443/announce",
-                    "udp://tracker.torrent.eu.org:451/announce",
-                    "udp://exodus.desync.com:6969/announce",
-                    "udp://tracker.moeking.me:6969/announce",
-                    "udp://explodie.org:6969/announce",
-                    "udp://open.free-tracker.ga:6969/announce",
-                    "udp://isk.richardsw.club:6969/announce",
-                    "udp://bt1.archive.org:6969/announce",
-                    "https://tracker.tamersunion.org:443/announce",
-                    "udp://tracker2.dler.org:80/announce",
-                    "udp://tracker.tiny-vps.com:6969/announce",
-                    "udp://tracker.theoks.net:6969/announce",
-                    "udp://tamas3.ynh.fr:6969/announce"
-                }));
+                Trackers: new string[] {}));
             services.AddScoped<IPackageDownloader, TorrentPackageDownloader>();
             services.AddSingleton<IPackageDownloadSizeCalculator, PackageDownloadSizeCalculcator>();
             services.AddTransient(_ =>

@@ -67,7 +67,11 @@ namespace EDLauncher.Core.Torrents
                     ["dht_bootstrap_nodes"] = "dht.libtorrent.org:25401,router.bittorrent.com:6881,dht.transmissionbt.com:6881,dht.aelitis.com:6881,192.168.0.155:42306",
                     ["enable_dht"] = true
                 },
+#if PRODUCTION
                 UseAuth = false,
+#else
+                UseAuth = true
+#endif
             };
 
             settings.UseLogging = enableDebugLog;

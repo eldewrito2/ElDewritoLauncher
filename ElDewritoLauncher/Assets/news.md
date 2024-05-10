@@ -1,4 +1,55 @@
-﻿# ElDewrito 0.7 - April 20 2024
+﻿# ElDewrito 0.7.1 - May 11 2024
+0.7.1 has arrived! With it comes a few new things, and a whole lot of fixes. We heard you through the crash reports and have been working to stamp out as many crashes as we can. We think we got a lot of them, however, there will undoubtedly be more, so keep them coming!
+
+At the time of writing there have been 10,156 games played, and over 8,874 players registered. A big shout out to the server hosts, pak hosts, and anyone seeding the game. Without you none of this would be possible!
+
+We are also excited to see so many modders from different Halo communities coming together to make mods for ElDewrito. It has been an absolute blast playing some of them. It's safe to say we haven't even begun to scratch the surface of what is possible, and we cannot wait to see what else you do with it!
+
+While this update was primarily focused on fixes, new features are coming. Stay turned.
+
+### Changelog
+- Added server joining dialog
+- Added variable to disable stats submission
+- Added shadow resolution option to advanced video settings
+- Added cook_torrance_pbr_maps to shader.rmdf
+- Added two_lobe_phong_tint_map to shader.rmdf
+- Allow hyphens in player names 
+- Allow emotes to play on holograms
+- Fixed crashes and desync on reach maps
+- Fixed crashes when loading a map with too many objects for multiplayer
+- Fixed crashes due to bad map mopp
+- Fixed crashes due to unsupported resolution
+- Fixed crashes when cancelling a mod download
+- Fixed weapon target tracking
+- Fixed giants not spawning in mp when placed in the scenario
+- Fixed giants and bipeds not respawning in multiplayer
+- Fixed decorator shadows
+- Fixed wraith change color
+- Fixed bad string parameters in glvs
+- Fixed detail blending issues
+- Fixed accuracy battle rifle stripe color shader
+- Fixed void space clear color
+- Fixed post match music starting at the end of rounds 
+- Fixed ALT+F4 from CEF screens
+- Fixed certain characters being incorrectly escaped in the server browser
+- Fixed halox ui showing under the server browser when joining a server
+- Fixed halox ui issues with resolutions above 8:5
+- Fixed rank up dialog showing behind player roster
+- Fixed voip secondary and mouse inputs not working
+- Fixed player rows on scoreboard hiding when right clicked after a match
+- Fixed scoreboard lingering after spawn and not showing sometimes on round end
+- Fixed title screen initial loading issues
+- Fixed ending game as client in campaign 
+- Fixed unintuitive built-in game type names
+- Fixed missing third person option for various player traits
+- Fixed missing weapon options for various player traits
+- Fixed random weighting for mulg weapons (previously random chance was ignored)
+- Fixed pops in various loop sounds
+- Fixed many more reported crashes
+
+---
+
+# ElDewrito 0.7 - April 20 2024
 
 It's been 6 years since the release of 0.6 and a lot has changed, too much to list in this news post.
 Here is just a **small** selection of some of the changes that we've made.
